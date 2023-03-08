@@ -36,9 +36,6 @@ public class Camera {
         if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT)) {
             position.y -= 0.1f;
         }
-        if (Mouse.isButtonDown(Mouse.)) {
-
-        }
     }
 
     public Vector3f getPosition() {
