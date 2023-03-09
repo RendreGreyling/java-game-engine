@@ -25,19 +25,17 @@ public class MainGame {
 
 
         RawModel model = OBJLoader.loadObjModel("dragon", loader);
-        //RawModel model = loader.loadToVAO(vertices, textureCoords, indices);
         ModelTexture texture = new ModelTexture(loader.loadTexture("white"));
         TexturedModel staticModel = new TexturedModel(model, texture);
 
+
         Entity entity = new Entity(staticModel, new Vector3f(0,0,-25),0,0,0,1);
-        Light light = new Light(new Vector3f(0, 20, -5), new Vector3f(1,1,1));
+        Light light = new Light(new Vector3f(0, 0, 0), new Vector3f(1,1,1));
 
         Camera camera = new Camera();
 
-
-
         while(!Display.isCloseRequested()) {
-            entity.increaseRotation(0, 0.2f, 0);
+            entity.increaseRotation(0, 1, 0);
             camera.move();
             renderer.prepare();
             shader.start();
