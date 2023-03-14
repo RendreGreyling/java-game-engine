@@ -9,7 +9,7 @@ import javax.swing.*;
 public class Camera {
 
     private Vector3f position = new Vector3f(0, 200, 0);
-    private float pitch = 90;
+    private float pitch = 30;
     private float yaw = 0;
     private float roll = 0;
     private float zoom = 0;
@@ -63,7 +63,7 @@ public class Camera {
     }
 
     public void calculatePitchAndYaw() {
-        if (Mouse.isButtonDown(2)) {
+        if (Mouse.isButtonDown(1)) {
             float pitchLevel = Mouse.getDY() * 0.1f;
             float yawLevel = Mouse.getDX() * 0.1f;
             pitch -= pitchLevel;
