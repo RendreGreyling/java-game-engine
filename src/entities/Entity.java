@@ -7,8 +7,8 @@ import org.lwjgl.util.vector.Vector3f;
 public class Entity {
 
     private TexturedModel model;
-    private Vector3f position;
-    private float rotX, rotY, rotZ;
+    protected Vector3f position;
+    protected float rotX, rotY, rotZ;
     private float scale;
 
     public Entity(TexturedModel model, Vector3f position, float rotX, float rotY, float rotZ, float scale) {
@@ -18,6 +18,13 @@ public class Entity {
         this.rotY = rotY;
         this.rotZ = rotZ;
         this.scale = scale;
+    }
+
+    public Entity(Vector3f position) {
+        this.position = position;
+        this.rotX = 0;
+        this.rotY = 0;
+        this.rotZ = 0;
     }
 
     public void increasePosition(float dx, float dy, float dz) {

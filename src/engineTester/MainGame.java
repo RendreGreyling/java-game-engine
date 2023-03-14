@@ -40,7 +40,7 @@ public class MainGame {
         Terrain terrain3 = new Terrain(-1, 0, loader, new ModelTexture(loader.loadTexture("grass")));
         Terrain terrain4 = new Terrain(-1, -1, loader, new ModelTexture(loader.loadTexture("grass")));
 
-        Camera camera = new Camera();
+        Camera camera = new Camera(new Vector3f(0,100,0));
         MasterRenderer renderer = new MasterRenderer();
 
         while (!Display.isCloseRequested()) {
