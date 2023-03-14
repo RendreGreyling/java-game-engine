@@ -8,10 +8,11 @@ import javax.swing.*;
 
 public class Camera {
 
-    private Vector3f position = new Vector3f(0, 20, 0);
-    private float pitch = 0;
+    private Vector3f position = new Vector3f(0, 200, 0);
+    private float pitch = 90;
     private float yaw = 0;
-    private float roll;
+    private float roll = 0;
+    private float zoom = 0;
 
     public Camera() {
 
@@ -19,29 +20,25 @@ public class Camera {
 
     public void move() {
         if (Keyboard.isKeyDown(Keyboard.KEY_W)) {
-            position.z -= 0.4f;
+            position.z -= 0.6f;
         }
         if (Keyboard.isKeyDown(Keyboard.KEY_S)) {
-            position.z += 0.4f;
+            position.z += 0.6f;
         }
         if (Keyboard.isKeyDown(Keyboard.KEY_D)) {
-            position.x += 0.4f;
+            position.x += 0.6f;
         }
         if (Keyboard.isKeyDown(Keyboard.KEY_A)) {
-            position.x -= 0.4f;
+            position.x -= 0.6f;
         }
         if (Keyboard.isKeyDown(Keyboard.KEY_SPACE)) {
-            position.y += 0.4f;
+            position.y += 0.6f;
         }
         if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT)) {
-            position.y -= 0.4f;
+            position.y -= 0.6f;
         }
-        if (Keyboard.isKeyDown(Keyboard.KEY_NUMPAD4)) {
-            yaw -= 0.4f;
-        }
-        if (Keyboard.isKeyDown(Keyboard.KEY_NUMPAD6)) {
-            yaw += 0.4f;
-        }
+        calculatePitchAndYaw();
+        
     }
 
     public Vector3f getPosition() {
@@ -58,5 +55,19 @@ public class Camera {
 
     public float getRoll() {
         return roll;
+    }
+
+    public void calculateZoom() {
+        float zoomLevel = Mouse.getDWheel() * 0.1f;
+        zoom -= zoomLevel;
+    }
+
+    public void calculatePitchAndYaw() {
+        if (Mouse.isButtonDown(2)) {
+            float pitchLevel = Mouse.getDY() * 0.1f;
+            float yawLevel = Mouse.getDX() * 0.1f;
+            pitch -= pitchLevel;
+            yaw -= yawLevel;
+        }
     }
 }
